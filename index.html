@@ -9,13 +9,31 @@
     <script src="./scripts/script.js" defer></script>
 </head>
 <body>
+    <div class="modal-wrapper">
+        <form class="modal column">
+            <h1 class="dialog-title">Add new book</h1>
+            <input type="text" placeholder="Title" class="title-input">
+            <input type="text" placeholder="Author" class="author-input">
+            <input type="text" placeholder="Pages" class="pages-input">
+            <div class="read-wrapper">
+                <label for="is-read">Have you read it?</label>
+                <input id="is-read" type="checkbox">
+            </div>
+            <button type="button" class="submit">Submit</button>
+        </form>
+    </div>
     <div class="container">
         <header class="header">
-            <div class="app-name">Library</div>
+            <div class="content">
+                <div class="app-name">Library</div>
+                <button type="button" class="login-button">Login</button>
+            </div>
         </header>
         <main class="main">
-            <div class="books">
-                
+            <div class="content column">
+                <button type="button" class="add-button">+ Add book</button>
+                <div class="books-wrapper">
+                </div>
             </div>
         </main>
     </div>

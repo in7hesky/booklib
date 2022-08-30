@@ -1,10 +1,18 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+
 *, *::before, *::after {
     box-sizing: border-box;
+}
+
+:root {
+    --card-padding: 10px;
 }
 
 body {
     margin: 0;
     font-size: 2rem;
+    font-family: "Roboto", sans-serif;
+    user-select: none;
 }
 
 input, button { 
@@ -23,8 +31,8 @@ button {
 
 .modal-wrapper {
     position: absolute;
-    width: 100vw;
-    height: 100vh;
+    width: 100%;
+    height: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -32,6 +40,7 @@ button {
     opacity: 0;
     pointer-events: none;
     transition: all 0.1s;
+    z-index: 2;
 }
 
 .modal-wrapper.open {
@@ -75,25 +84,67 @@ button {
 .header > .content {
     justify-content: space-between;
     align-items: center;
+    padding: 10px 30px;
 }
 
 .main > .content {
     align-items: center;
+    gap: 20px;
+    padding: 20px 10px;
+}
+
+.add-button {
+    border-radius: 50%;
+    border-width: 3px;
+    width: 60px;
+    height: 60px;
 }
 
 .books-wrapper {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+    grid-template-columns: repeat(4, minmax(200px, 1fr));
+    font-size: 1.5rem
 }
 
 .book {
     position: relative;
+    user-select: text;
+    border-radius: 3px;
+    box-shadow: 2px 2px 3px grey;
+    padding: var(--card-padding)
 }
 
-.book::after {
-    content: "\00d7";
+.close-button {
     position: absolute;
     top: 0px;
     right: 0px;
+    background: none;
+    border: none;
+}
+
+.close-button::after {
+    content: "\00d7";
+    width: 20px;
+    height: 20px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(
+        calc(-50% - var(--card-padding)), 
+        calc(-50% + var(--card-padding))
+        );
     cursor: pointer;
+}
+
+.status-button {
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    top: 0px;
+    left: 0px;
+    transform: translate(
+        var(--card-padding),
+        var(--card-padding)
+    );
 }

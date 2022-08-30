@@ -13,11 +13,13 @@ body {
     font-size: 2rem;
     font-family: "Roboto", sans-serif;
     user-select: none;
+    position: relative;
 }
 
 input, button { 
     display: block;
     font-size: inherit;
+    outline: none;
 }
 
 button {
@@ -33,9 +35,6 @@ button {
     position: absolute;
     width: 100%;
     height: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
     background: rgba(0, 0, 0, 0.3);
     opacity: 0;
     pointer-events: none;
@@ -49,21 +48,52 @@ button {
 }
 
 .modal {
-    max-width: 400px;
+    max-width: 350px;
     background: #FFE8DF;
-    transform: scale(0.5);
+    transform: scale(0.8) translate(-60%, -50%);
     transition: all 0.3s;
     opacity: 0;
+    gap: 20px;
+    padding: 20px 20px;
+    border-radius: 4px;
+    position: absolute;
+    top: 50vh;
+    left: 50vw;
 }
 
 .modal.open {
-    transform: scale(1);
+    transform: scale(1) translate(-50%, -50%);
     opacity: 1;
+}
+
+.dialog-title {
+    font-size: 2rem;
+    margin: 20px 0;
 }
 
 .read-wrapper {
     display: flex;
     align-self: center;
+    gap: 5px;
+}
+
+.is-read {
+    display: block;
+    width: 30px;
+    height: 30px;
+    accent-color: grey;
+    cursor: pointer;
+}
+
+.buttons-wrapper {
+    width: 100%;
+    display: flex;
+    justify-content: stretch;
+}
+
+.buttons-wrapper > * {
+    display: block;
+    flex: 1;
 }
 
 .container {
@@ -95,24 +125,42 @@ button {
 
 .add-button {
     border-radius: 50%;
-    border-width: 3px;
+    border: none;
+    box-shadow: 0px 0px 4px rgb(110, 110, 110);
     width: 60px;
     height: 60px;
+    transition: all 0.4s;
+}
+
+.add-button:hover {
+    transform: rotate(-90deg);
+}
+
+.add-button:active {
+    box-shadow: 0px 0px 12px black;
 }
 
 .books-wrapper {
+    width: 100%;
     display: grid;
     gap: 20px;
-    grid-template-columns: repeat(4, minmax(200px, 1fr));
-    font-size: 1.5rem
+    grid-template-columns: repeat(auto-fill, 200px);
+    justify-content: center;
+    font-size: 1.5rem;
 }
 
 .book {
     position: relative;
     user-select: text;
     border-radius: 3px;
-    box-shadow: 2px 2px 3px grey;
-    padding: var(--card-padding)
+    box-shadow: 2px 2px 3px rgb(187, 187, 187);
+    padding: var(--card-padding);
+    transition: all 0.3s;
+}
+
+.book.closed {
+    transform: scale(0.3);
+    opacity: 0;
 }
 
 .close-button {
@@ -147,4 +195,16 @@ button {
         var(--card-padding),
         var(--card-padding)
     );
+}
+
+
+@media (max-width: 370px) {
+    .modal {
+        font-size: 1.1rem;
+    }
+
+    .dialog-title {
+        font-size: 1.3rem;
+        margin: 5px 0;
+    }
 }

@@ -26,16 +26,12 @@ modal.addEventListener("submit", (e) => {
         data.get("pages"), data.get("isRead"))
     shelf.push(book)
     refreshShelf()
-    toggleOpen(modalWrapper, modal)
+    toggleModalOpen()
 })
 
-addButton.addEventListener("click", () => {
-    toggleOpen(modalWrapper, modal)
-})
+addButton.addEventListener("click", toggleModalOpen)
 
-modalWrapper.addEventListener("click", () => {
-    toggleOpen(modalWrapper, modal)
-})
+modalWrapper.addEventListener("click", toggleModalOpen)
 
 modal.addEventListener("click", (e) => {
     e.stopPropagation()
@@ -65,8 +61,9 @@ function wireCloseButtons() {
     closeButtons.forEach( button => {
         button.addEventListener("click", (e) => {
             shelf.splice(getBookIndex(e.target.parentElement), 1)
-            refreshShelf()
-        })
+            e.target.parentElement.classList.add("closed")
+            setTimeout(refreshShelf, 300)
+        }, {once:true})
     })
 }
 
@@ -96,10 +93,9 @@ function createBookNode(book, counter) {
     return bookNode
 }
 
-function toggleOpen(...targets) {
-    targets.forEach(target => {
-        target.classList.toggle("open")
-    })
+function toggleModalOpen() {
+    modalWrapper.classList.toggle("open")
+    modal.classList.toggle("open")
 }
 
 function getBookIndex(bookNode) {

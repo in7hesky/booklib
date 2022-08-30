@@ -12,12 +12,12 @@
     <div class="modal-wrapper">
         <form class="modal column">
             <h1 class="dialog-title">Add new book</h1>
-            <input type="text" placeholder="Title" class="title-input" required>
-            <input type="text" placeholder="Author" class="author-input" required>
-            <input type="text" placeholder="Pages" class="pages-input" required>
+            <input type="text" placeholder="Title" class="title-input" name="title" required>
+            <input type="text" placeholder="Author" class="author-input" name="author" required>
+            <input type="number" placeholder="Pages" class="pages-input" name="pages" required>
             <div class="read-wrapper">
                 <label for="is-read">Have you read it?</label>
-                <input id="is-read" type="checkbox">
+                <input id="is-read" name="isRead" type="checkbox">
             </div>
             <button type="submit" class="submit">Submit</button>
         </form>

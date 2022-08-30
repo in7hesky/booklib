@@ -83,5 +83,17 @@ button {
 
 .books-wrapper {
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-columns: repeat(4, 1fr);
+}
+
+.book {
+    position: relative;
+}
+
+.book::after {
+    content: "\00d7";
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    cursor: pointer;
 }
